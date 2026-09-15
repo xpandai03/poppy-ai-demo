@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "A concept demo of an AI ad creative engine: chat on the left, a live creative library on the right.",
   icons: {
-    icon: "/icon.svg",
+    icon: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
     apple: "/apple-icon.png",
   },
   openGraph: {
