@@ -48,8 +48,8 @@ export function CreativeSheet({ container }: { container: HTMLElement | null }) 
       <SheetContent
         container={container}
         side="right"
-        overlayClassName="absolute z-[8990] bg-black/40"
-        className="absolute z-[9000] h-full w-full overflow-y-auto border-l border-stone-200 bg-white p-0 sm:max-w-[380px]"
+        overlayClassName="absolute z-[8990] bg-stone-50/70 backdrop-blur-[2px]"
+        className="absolute z-[9000] h-full w-full overflow-y-auto border-l border-stone-200 bg-white p-0 shadow-[0_0_40px_-8px_rgba(28,25,23,0.25)] sm:max-w-[380px]"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         {creative ? (

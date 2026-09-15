@@ -3,7 +3,13 @@
 import { create } from "zustand"
 import { defaultItems, type LibraryCreative } from "@/lib/library-items"
 
+/** "intro" = full-screen welcome, "workspace" = the 50/50 split. */
+export type Phase = "intro" | "workspace"
+
 interface LibraryState {
+  phase: Phase
+  setPhase: (p: Phase) => void
+
   items: LibraryCreative[]
   selectedId: string | null
   isGenerating: boolean
@@ -32,6 +38,9 @@ let seq = 100
  * per-token streaming updates never reach the GSAP ticker driving the carousel.
  */
 export const useLibrary = create<LibraryState>((set, get) => ({
+  phase: "intro",
+  setPhase: (p) => set({ phase: p }),
+
   items: defaultItems,
   selectedId: null,
   isGenerating: false,

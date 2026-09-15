@@ -51,7 +51,7 @@ export function LibraryPane() {
         // Hold the idle drift while the assistant is generating.
         autoRotateSpeed={isGenerating ? 0 : 0.12}
         pauseOnHover
-        surfaceColor="#000000"
+        surfaceColor="#fafaf9"
       />
 
       <CreativeSheet container={paneEl} />

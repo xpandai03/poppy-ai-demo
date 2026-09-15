@@ -6,6 +6,7 @@ import { useState, useRef, useCallback, type KeyboardEvent, useEffect } from "re
 import { Square, Mic, MicOff, Paperclip, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { useLibrary } from "@/lib/store"
 import Image from "next/image"
 import { AnimatedOrb } from "./animated-orb"
 import { AudioWaveform } from "./audio-waveform"
@@ -28,6 +29,8 @@ export function Composer({ onSend, onStop, isStreaming, disabled }: ComposerProp
   const fileInputRef = useRef<HTMLInputElement>(null)
   const recognitionRef = useRef<any>(null)
   const baseTextRef = useRef("")
+  const setPhase = useLibrary((s) => s.setPhase)
+  const introDoneRef = useRef(false)
   const finalTranscriptsRef = useRef("")
 
   useEffect(() => {
@@ -166,7 +169,16 @@ export function Composer({ onSend, onStop, isStreaming, disabled }: ComposerProp
   }, [])
 
   return (
-    <div className={cn("absolute bottom-4 left-0 right-0 px-4 pointer-events-none z-10", hasAnimated && "composer-intro")}>
+    <div
+      className={cn("absolute bottom-4 left-0 right-0 px-4 pointer-events-none z-10", hasAnimated && "composer-intro")}
+      // composer-intro is the last intro animation to finish (1s delay + 4s vs
+      // orb-intro's 4s), so its end is the cue to resolve into the split layout.
+      onAnimationEnd={(e) => {
+        if (e.animationName !== "composer-intro" || introDoneRef.current) return
+        introDoneRef.current = true
+        setPhase("workspace")
+      }}
+    >
       <div className="relative max-w-xl mx-auto pointer-events-auto">
         <div
           className={cn(

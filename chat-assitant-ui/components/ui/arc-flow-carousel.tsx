@@ -467,7 +467,7 @@ export default function ArcFlowCarousel({
 
   return (
     <section
-      className={`relative bg-black h-full w-full overflow-hidden select-none ${className}`}
+      className={`relative bg-stone-50 h-full w-full overflow-hidden select-none ${className}`}
       style={{ backgroundColor: surfaceColor }}
     >
       <div
@@ -506,12 +506,12 @@ export default function ArcFlowCarousel({
               ref={(el) => {
                 innerRefs.current[i] = el;
               }}
-              className={`creative-card relative h-full w-full overflow-hidden rounded-[10px] bg-black/5 ${
+              className={`creative-card relative h-full w-full overflow-hidden rounded-[10px] bg-stone-200 ${
                 item.status === "generating" ? "is-generating" : ""
               }`}
               style={{
                 opacity: reduceMotion ? 1 : 0,
-                boxShadow: "0 18px 40px -12px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.15)",
+                boxShadow: "0 18px 38px -14px rgba(28,25,23,0.22), 0 2px 6px rgba(28,25,23,0.10)",
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -529,7 +529,7 @@ export default function ArcFlowCarousel({
                 }`}
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.12) 45%, rgba(0,0,0,0.62) 100%)",
+                    "linear-gradient(180deg, rgba(250,250,249,0.80) 0%, rgba(250,250,249,0.30) 40%, rgba(250,250,249,0.00) 100%)",
                 }}
               />
 
@@ -548,16 +548,16 @@ export default function ArcFlowCarousel({
 
               {/* Caption: variation number + headline */}
               <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 p-3 text-white"
+                className="pointer-events-none absolute inset-x-0 bottom-0 p-3"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.72) 100%)",
+                    "linear-gradient(180deg, rgba(250,250,249,0) 0%, rgba(250,250,249,0.88) 42%, rgba(250,250,249,0.97) 100%)",
                 }}
               >
-                <p className="text-[0.62rem] font-medium uppercase tracking-[0.18em] text-white/70">
+                <p className="text-[0.62rem] font-medium uppercase tracking-[0.18em] text-stone-600">
                   Variation {item.variation}
                 </p>
-                <p className="mt-1 text-[0.8rem] font-medium leading-[1.25] text-white/95">
+                <p className="mt-1 text-[0.8rem] font-medium leading-[1.25] text-stone-900">
                   {item.headline}
                 </p>
               </div>
